@@ -1,0 +1,37 @@
+{
+    "app-id": "org.flatpak.HelloPy",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "1.6",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "runner.sh",
+    "modules": [
+        {
+            "name": "cpython",
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tar.xz",
+                    "sha256": "f434053ba1b5c8a5cc597e966ead3c5143012af827fd3f0697d21450bb8d87a6"
+                }
+            ]
+        },
+        {
+            "name": "runner",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -D runner.sh /app/bin/runner.sh",
+                "install -D hello.py /app/bin/hello.py"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "path": "hello.py"
+                },
+                {
+                    "type": "file",
+                    "path": "runner.sh"
+                }
+            ]
+        }
+    ]
+}
